@@ -4,8 +4,9 @@
 
 @layer base {
   :root {
-    --color-background: #f5ffe8;
-    --color-primary: #638c6d;
+    --color-background: #eefcdb;
+    --color-mobile-menu-background: #fbfcdb;
+    --color-primary: #487a55;
     --color-brown-light: #754e1a;
     --color-brown-dark: #211403;
   }

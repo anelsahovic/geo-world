@@ -1,15 +1,8 @@
 import type { Metadata } from 'next';
-import { Karla, Galindo } from 'next/font/google';
+
 import './globals.css';
-
-const karla = Karla({
-  subsets: ['latin'],
-});
-
-export const galindo = Galindo({
-  subsets: ['latin'],
-  weight: '400',
-});
+import Header from './sections/Header';
+import { karla } from '@/lib/fonts';
 
 export const metadata: Metadata = {
   title: 'Geo World',
@@ -24,7 +17,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${karla.className} antialiased max-w-5xl mx-auto`}>
+      <body
+        className={`${karla.className} antialiased max-w-7xl mx-auto relative`}
+      >
+        <Header />
         {children}
       </body>
     </html>
