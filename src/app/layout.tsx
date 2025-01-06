@@ -1,8 +1,9 @@
 import type { Metadata } from 'next';
 
 import './globals.css';
-import Header from './sections/Header';
 import { karla } from '@/lib/fonts';
+import Header from '../sections/Header';
+// import TopBar from '@/sections/TopBar';
 
 export const metadata: Metadata = {
   title: 'Geo World',
@@ -20,6 +21,7 @@ export default function RootLayout({
       <body
         className={`${karla.className} antialiased max-w-7xl mx-auto relative`}
       >
+        {/* <TopBar /> */}
         <Header />
         {children}
       </body>

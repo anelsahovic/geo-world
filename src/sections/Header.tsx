@@ -46,7 +46,7 @@ export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const path = usePathname();
   return (
-    <header className="flex items-center justify-between w-full py-2 px-8 lg:py-1 border-b border-[var(--color-brown-light)]">
+    <header className="flex items-center justify-between w-full py-2 px-8 lg:py-1 border-b border-[var(--color-brown-light)] ">
       <div>
         <Link href="/" className="flex items-center justify-center gap-2">
           <Image src="/logo.png" alt="Geo World" width={40} height={40} />
@@ -70,9 +70,9 @@ export default function Header() {
               }`}
             />
             <p
-              className={
-                "hidden lg:block group-hover:font-bold transition duration-500 ${path === href ? 'font-bold' : ''}"
-              }
+              className={`hidden lg:block group-hover:font-bold transition duration-500 ${
+                path === href ? 'font-bold' : ''
+              }`}
             >
               {name}
             </p>
@@ -82,7 +82,7 @@ export default function Header() {
 
       <div className="hidden md:flex items-center justify-center  ">
         <Link
-          href="/visited"
+          href="/wishlist"
           className="flex flex-col items-center justify-center  py-2 px-4  bg-[var(--color-primary)] text-white w-full h-full rounded-l-full hover:opacity-80 transition duration-300"
         >
           <LuStar className="size-5" />
@@ -109,7 +109,7 @@ export default function Header() {
 
       {/* Mobile Menu */}
       {isMenuOpen && (
-        <div className="absolute w-[80%] h-screen top-0 right-0 border-l border-[var(--color-brown-light)] shadow-xl bg-[var(--color-mobile-menu-background)] ">
+        <div className="absolute w-[80%] h-screen top-0 right-0 border-l border-[var(--color-brown-light)] shadow-xl bg-[var(--color-mobile-menu-background)] z-10">
           <div className="w-full h-full relative flex flex-col items-center justify-evenly">
             {/* close button */}
             <div className="absolute top-2 left-2">
@@ -150,9 +150,9 @@ export default function Header() {
                     }`}
                   />
                   <p
-                    className={
-                      "group-hover:font-bold text-xl transition duration-500 ${path === href ? 'font-bold' : ''}"
-                    }
+                    className={`group-hover:font-bold text-xl transition duration-500 ${
+                      path === href ? 'font-bold' : ''
+                    }`}
                   >
                     {name}
                   </p>
@@ -162,7 +162,7 @@ export default function Header() {
 
             <div className="flex items-center justify-evenly w-full">
               <Link
-                href="/visited"
+                href="/wishlist"
                 className="flex items-center justify-center  py-3  w-24 gap-1 bg-[var(--color-primary)] text-white  rounded-2xl hover:opacity-80 transition duration-300"
               >
                 <LuStar className="size-5" />
