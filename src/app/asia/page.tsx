@@ -1,7 +1,10 @@
+import Loading from '@/components/Loading';
+import AsiaCountries from '@/sections/AsiaCountries';
 import ContinentHero from '@/sections/ContinentHero';
-import { continentDataType } from '@/types/types';
+import { ContinentDataType } from '@/types/types';
+import { Suspense } from 'react';
 
-const asiaData: continentDataType = {
+const asiaData: ContinentDataType = {
   title: 'Asia',
   description:
     "Asia is the world's largest and most populous continent. Covering about 44.58 million km² and home to over 4.7 billion people, it accounts for 60% of the global population and is a cradle of ancient civilizations and modern innovations.",
@@ -20,6 +23,9 @@ export default function AsiaRoute() {
   return (
     <div className="flex flex-col items-center justify-center w-full z-0">
       <ContinentHero data={asiaData} />
+      <Suspense fallback={<Loading />}>
+        <AsiaCountries />
+      </Suspense>
     </div>
   );
 }

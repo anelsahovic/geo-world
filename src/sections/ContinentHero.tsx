@@ -1,10 +1,10 @@
 import SearchBar from '@/components/SearchBar';
-import { continentDataType } from '@/types/types';
+import { ContinentDataType } from '@/types/types';
 import Image from 'next/image';
 import React from 'react';
 
 type Props = {
-  data: continentDataType;
+  data: ContinentDataType;
 };
 
 export default function ContinentHero({ data }: Props) {

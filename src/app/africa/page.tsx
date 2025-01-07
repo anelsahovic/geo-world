@@ -1,7 +1,10 @@
+import Loading from '@/components/Loading';
+import AfricaCountries from '@/sections/AfricaCountries';
 import ContinentHero from '@/sections/ContinentHero';
-import { continentDataType } from '@/types/types';
+import { ContinentDataType } from '@/types/types';
+import { Suspense } from 'react';
 
-const africaData: continentDataType = {
+const africaData: ContinentDataType = {
   title: 'Africa',
   description:
     "Africa is the world's second-largest and second-most populous continent after Asia. Covering 20% of Earth's land area and hosting 1.4 billion people, it's a land of diversity, culture, and natural wonders.",
@@ -20,6 +23,9 @@ export default function AfricaRoute() {
   return (
     <div className="flex flex-col items-center justify-center w-full z-0">
       <ContinentHero data={africaData} />
+      <Suspense fallback={<Loading />}>
+        <AfricaCountries />
+      </Suspense>
     </div>
   );
 }
