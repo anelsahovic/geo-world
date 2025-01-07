@@ -5,6 +5,7 @@ import { ContinentDataType } from '@/types/types';
 import { Suspense } from 'react';
 
 const australiaData: ContinentDataType = {
+  page: '/australia',
   title: 'Australia',
   description:
     'Australia, the smallest continent and largest island, is known for its unique wildlife, vast outback, and vibrant cities. It spans Oceania, including Australia and surrounding islands in the Pacific Ocean.',
@@ -19,12 +20,17 @@ const australiaData: ContinentDataType = {
   imageUrl: '/wallpapers/australia_wallpaper.jpg',
 };
 
-export default function AustraliaRoute() {
+type Props = {
+  searchParams: Promise<{ query?: string }>;
+};
+
+export default async function AustraliaRoute({ searchParams }: Props) {
+  const { query } = await searchParams;
   return (
     <div className="flex flex-col items-center justify-center w-full z-0">
-      <ContinentHero data={australiaData} />
+      <ContinentHero data={australiaData} query={query} />
       <Suspense fallback={<Loading />}>
-        <AustraliaCountries />
+        <AustraliaCountries query={query} />
       </Suspense>
     </div>
   );

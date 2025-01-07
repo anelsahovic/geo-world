@@ -5,6 +5,7 @@ import { ContinentDataType } from '@/types/types';
 import { Suspense } from 'react';
 
 const africaData: ContinentDataType = {
+  page: '/africa',
   title: 'Africa',
   description:
     "Africa is the world's second-largest and second-most populous continent after Asia. Covering 20% of Earth's land area and hosting 1.4 billion people, it's a land of diversity, culture, and natural wonders.",
@@ -19,12 +20,17 @@ const africaData: ContinentDataType = {
   imageUrl: '/wallpapers/africa_wallpaper.jpeg',
 };
 
-export default function AfricaRoute() {
+type Props = {
+  searchParams: Promise<{ query?: string }>;
+};
+
+export default async function AfricaRoute({ searchParams }: Props) {
+  const { query } = await searchParams;
   return (
     <div className="flex flex-col items-center justify-center w-full z-0">
-      <ContinentHero data={africaData} />
+      <ContinentHero data={africaData} query={query} />
       <Suspense fallback={<Loading />}>
-        <AfricaCountries />
+        <AfricaCountries query={query} />
       </Suspense>
     </div>
   );

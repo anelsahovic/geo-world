@@ -1,4 +1,5 @@
 export type ContinentDataType = {
+  page: string;
   title: string;
   description: string;
   stats: {

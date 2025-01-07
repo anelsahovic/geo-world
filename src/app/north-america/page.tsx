@@ -5,6 +5,7 @@ import { ContinentDataType } from '@/types/types';
 import { Suspense } from 'react';
 
 const northAmericaData: ContinentDataType = {
+  page: '/north-america',
   title: 'North America',
   description:
     'North America is a continent known for its vast landscapes, diverse cultures, and economic influence. It includes countries like the United States, Canada, and Mexico, and plays a significant role in global politics, trade, and culture.',
@@ -22,12 +23,17 @@ const northAmericaData: ContinentDataType = {
   imageUrl: '/wallpapers/north_america_wallpaper.jpg',
 };
 
-export default function NorthAmericaRoute() {
+type Props = {
+  searchParams: Promise<{ query?: string }>;
+};
+
+export default async function NorthAmericaRoute({ searchParams }: Props) {
+  const { query } = await searchParams;
   return (
     <div className="flex flex-col items-center justify-center w-full z-0">
-      <ContinentHero data={northAmericaData} />
+      <ContinentHero data={northAmericaData} query={query} />
       <Suspense fallback={<Loading />}>
-        <NorthAmericaCountries />
+        <NorthAmericaCountries query={query} />
       </Suspense>
     </div>
   );

@@ -5,6 +5,7 @@ import { ContinentDataType } from '@/types/types';
 import { Suspense } from 'react';
 
 const asiaData: ContinentDataType = {
+  page: '/asia',
   title: 'Asia',
   description:
     "Asia is the world's largest and most populous continent. Covering about 44.58 million km² and home to over 4.7 billion people, it accounts for 60% of the global population and is a cradle of ancient civilizations and modern innovations.",
@@ -19,12 +20,17 @@ const asiaData: ContinentDataType = {
   imageUrl: '/wallpapers/asia_wallpaper.jpeg',
 };
 
-export default function AsiaRoute() {
+type Props = {
+  searchParams: Promise<{ query?: string }>;
+};
+
+export default async function AsiaRoute({ searchParams }: Props) {
+  const { query } = await searchParams;
   return (
     <div className="flex flex-col items-center justify-center w-full z-0">
-      <ContinentHero data={asiaData} />
+      <ContinentHero data={asiaData} query={query} />
       <Suspense fallback={<Loading />}>
-        <AsiaCountries />
+        <AsiaCountries query={query} />
       </Suspense>
     </div>
   );

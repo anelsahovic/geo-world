@@ -5,6 +5,7 @@ import { ContinentDataType } from '@/types/types';
 import { Suspense } from 'react';
 
 const southAmericaData: ContinentDataType = {
+  page: '/south-america',
   title: 'South America',
   description:
     'South America is a continent known for its rich biodiversity, vibrant cultures, and diverse landscapes, from the Amazon rainforest to the Andes mountains. It is home to numerous indigenous peoples, historic sites, and booming urban centers.',
@@ -22,12 +23,17 @@ const southAmericaData: ContinentDataType = {
   imageUrl: '/wallpapers/south_america_wallpaper.jpg',
 };
 
-export default function SouthAmericaRoute() {
+type Props = {
+  searchParams: Promise<{ query?: string }>;
+};
+
+export default async function SouthAmericaRoute({ searchParams }: Props) {
+  const { query } = await searchParams;
   return (
     <div className="flex flex-col items-center justify-center w-full z-0">
-      <ContinentHero data={southAmericaData} />
+      <ContinentHero data={southAmericaData} query={query} />
       <Suspense fallback={<Loading />}>
-        <SouthAmericaCountries />
+        <SouthAmericaCountries query={query} />
       </Suspense>
     </div>
   );

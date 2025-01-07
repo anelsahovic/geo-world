@@ -1,14 +1,15 @@
-import SearchBar from '@/components/SearchBar';
+import SearchForm from '@/components/SearchForm';
 import { ContinentDataType } from '@/types/types';
 import Image from 'next/image';
 import React from 'react';
 
 type Props = {
   data: ContinentDataType;
+  query?: string;
 };
 
-export default function ContinentHero({ data }: Props) {
-  const { title, description, stats, imageUrl } = data;
+export default function ContinentHero({ query, data }: Props) {
+  const { page, title, description, stats, imageUrl } = data;
   return (
     <div className="relative w-full h-screen overflow-hidden py-10">
       {/* Background Image */}
@@ -52,7 +53,7 @@ export default function ContinentHero({ data }: Props) {
         </div>
 
         {/* Search Input */}
-        <SearchBar />
+        <SearchForm page={page.toLowerCase()} query={query} />
       </div>
     </div>
   );

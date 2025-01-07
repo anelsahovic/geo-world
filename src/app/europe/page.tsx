@@ -5,6 +5,7 @@ import { ContinentDataType } from '@/types/types';
 import { Suspense } from 'react';
 
 const europeData: ContinentDataType = {
+  page: '/europe',
   title: 'Europe',
   description:
     'Europe, the cradle of Western civilization, is known for its rich history, cultural diversity, and modern innovations. It is the second smallest continent but densely populated and influential globally.',
@@ -19,12 +20,17 @@ const europeData: ContinentDataType = {
   imageUrl: '/wallpapers/europe_wallpaper.jpg',
 };
 
-export default async function EuropeRoute() {
+type Props = {
+  searchParams: Promise<{ query?: string }>;
+};
+
+export default async function EuropeRoute({ searchParams }: Props) {
+  const { query } = await searchParams;
   return (
     <div className="flex flex-col items-center justify-center w-full z-0">
-      <ContinentHero data={europeData} />
+      <ContinentHero data={europeData} query={query} />
       <Suspense fallback={<Loading />}>
-        <EuropeCountries />
+        <EuropeCountries query={query} />
       </Suspense>
     </div>
   );
