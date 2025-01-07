@@ -24,16 +24,16 @@ const northAmericaData: ContinentDataType = {
 };
 
 type Props = {
-  searchParams: Promise<{ query?: string }>;
+  searchParams: Promise<{ query?: string; page?: string; per_page?: string }>;
 };
 
 export default async function NorthAmericaRoute({ searchParams }: Props) {
-  const { query } = await searchParams;
+  const params = (await searchParams) || {};
   return (
     <div className="flex flex-col items-center justify-center w-full z-0">
-      <ContinentHero data={northAmericaData} query={query} />
+      <ContinentHero data={northAmericaData} query={params.query} />
       <Suspense fallback={<Loading />}>
-        <NorthAmericaCountries query={query} />
+        <NorthAmericaCountries params={params} />
       </Suspense>
     </div>
   );

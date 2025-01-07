@@ -2,10 +2,14 @@ import { Country, formatCountries } from '@/utils/helperFunctions';
 import CountriesList from './CountriesList';
 
 type Props = {
-  query?: string;
+  params: {
+    query?: string;
+    page?: string;
+    per_page?: string;
+  };
 };
 
-export default async function NorthAmericaCountries({ query }: Props) {
+export default async function NorthAmericaCountries({ params }: Props) {
   const data = await fetch(
     'https://restcountries.com/v3.1/region/americas?fields=name,capital,population,area,subregion,currencies,timezones,flags,coatOfArms,flag,continents'
   );
@@ -16,5 +20,5 @@ export default async function NorthAmericaCountries({ query }: Props) {
   );
 
   const formattedCountries = formatCountries(filteredCountries);
-  return <CountriesList countries={formattedCountries} query={query} />;
+  return <CountriesList countries={formattedCountries} params={params} />;
 }

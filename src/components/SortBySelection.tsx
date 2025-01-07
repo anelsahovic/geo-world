@@ -1,6 +1,6 @@
 export default function SortBySelection() {
   return (
-    <form className="flex flex-col sm:flex-row items-start sm:items-center sm:gap-2">
+    <form className="flex flex-col items-start sm:gap-2">
       <label
         htmlFor="sortBy"
         className="text-sm sm:text-base md:text-lg font-medium text-gray-700 whitespace-nowrap"
