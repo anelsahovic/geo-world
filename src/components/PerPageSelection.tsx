@@ -16,22 +16,22 @@ export default function PerPageSelection() {
     router.push(`${window.location.pathname}?${params.toString()}`);
   };
 
-  const handleSortChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
+  const handlePerPageChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
     createPageURL(e.target.value);
   };
 
   return (
-    <form className="flex flex-col items-start  sm:gap-2">
+    <form className="flex flex-col items-start  ">
       <label
-        htmlFor="sortBy"
+        htmlFor="perPage"
         className="text-sm sm:text-base md:text-lg font-medium text-gray-700 whitespace-nowrap"
       >
         Per page:
       </label>
       <select
-        id="sortBy"
-        onChange={handleSortChange}
-        className="p-2 bg-gray-50 border-2 border-gray-300 text-gray-900 text-sm sm:text-base rounded-lg focus:ring-[var(--color-primary)] focus:border-[var(--color-primary)] block w-full"
+        id="perPage"
+        onChange={handlePerPageChange}
+        className="block py-2 px-2 w-full text-sm sm:text-base lg:text-lg text-gray-500 bg-transparent border-0 border-b-2 border-zinc-400 appearance-none focus:outline-none focus:ring-0 focus:border-green-500"
         defaultValue={8}
       >
         <option value="4">4</option>

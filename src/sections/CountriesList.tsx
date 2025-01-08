@@ -3,6 +3,7 @@ import { PaginationComponent } from '@/components/PaginationComponent';
 import PerPageSelection from '@/components/PerPageSelection';
 import SortBySelection from '@/components/SortBySelection';
 import { CountryCardType } from '@/types/types';
+import { sortCountries } from '@/utils/helperFunctions';
 import React from 'react';
 
 type Props = {
@@ -11,6 +12,8 @@ type Props = {
     query?: string;
     page?: string;
     per_page?: string;
+    sort?: string;
+    order?: string;
   };
 };
 
@@ -18,11 +21,16 @@ export default async function CountriesList({ countries, params }: Props) {
   const query = params.query || '';
   const page = params.page || '1';
   const per_page = params.per_page || '8';
+  const sort = params.sort || '';
+  const order = params.order || '';
+
   let countriesLength = countries.length;
 
   const start = (Number(page) - 1) * Number(per_page);
   const end = start + Number(per_page);
   let pageNumbers = Math.ceil(countriesLength / Number(per_page));
+
+  // filter countries / search
   if (query) {
     const filteredCountries = countries.filter((country: CountryCardType) => {
       return (
@@ -35,6 +43,12 @@ export default async function CountriesList({ countries, params }: Props) {
     countriesLength = countries.length;
   }
 
+  // sort countries
+  if (sort && order) {
+    countries = sortCountries(countries, sort, order);
+  }
+
+  // slice countries based on pagination
   countries = countries.slice(start, end);
 
   return (
@@ -48,7 +62,7 @@ export default async function CountriesList({ countries, params }: Props) {
         ) : (
           <p className=" lg:text-lg">Showing all countries</p>
         )}
-        <div className="grid grid-cols-2 gap-2">
+        <div className="grid grid-cols-2 gap-2 p-2 ">
           <PerPageSelection />
           <SortBySelection />
         </div>

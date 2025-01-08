@@ -70,3 +70,26 @@ export function formatCountries(countries: Country[]): CountryCardType[] {
     };
   });
 }
+
+export function sortCountries(
+  countries: CountryCardType[],
+  sort: string,
+  order: string
+): CountryCardType[] {
+  return countries.sort((a, b) => {
+    if (sort === 'name') {
+      return order === 'asc'
+        ? a.name.localeCompare(b.name)
+        : b.name.localeCompare(a.name);
+    }
+    if (sort === 'population') {
+      return order === 'asc'
+        ? a.population - b.population
+        : b.population - a.population;
+    }
+    if (sort === 'area') {
+      return order === 'asc' ? a.area - b.area : b.area - a.area;
+    }
+    return 0;
+  });
+}

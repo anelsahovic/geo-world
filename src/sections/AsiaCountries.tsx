@@ -6,6 +6,8 @@ type Props = {
     query?: string;
     page?: string;
     per_page?: string;
+    sort?: string;
+    order?: string;
   };
 };
 

@@ -21,7 +21,13 @@ const australiaData: ContinentDataType = {
 };
 
 type Props = {
-  searchParams: Promise<{ query?: string; page?: string; per_page?: string }>;
+  searchParams: Promise<{
+    query?: string;
+    page?: string;
+    per_page?: string;
+    sort?: string;
+    order?: string;
+  }>;
 };
 
 export default async function AustraliaRoute({ searchParams }: Props) {
