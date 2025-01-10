@@ -53,7 +53,9 @@ export default function ContinentHero({ query, data }: Props) {
         </div>
 
         {/* Search Input */}
-        <SearchForm page={page.toLowerCase()} query={query} />
+        <div className="w-full max-w-lg">
+          <SearchForm page={page.toLowerCase()} query={query} />
+        </div>
       </div>
     </div>
   );

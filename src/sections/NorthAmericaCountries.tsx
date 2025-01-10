@@ -1,5 +1,6 @@
-import { Country, formatCountries } from '@/utils/helperFunctions';
+import { formatCountries } from '@/utils/helperFunctions';
 import CountriesList from './CountriesList';
+import { CountryRaw } from '@/types/types';
 
 type Props = {
   params: {
@@ -17,7 +18,7 @@ export default async function NorthAmericaCountries({ params }: Props) {
   );
   const countries = await data.json();
 
-  const filteredCountries = countries.filter((country: Country) =>
+  const filteredCountries = countries.filter((country: CountryRaw) =>
     country.continents?.includes('North America')
   );
 

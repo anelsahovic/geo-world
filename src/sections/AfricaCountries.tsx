@@ -19,5 +19,6 @@ export default async function AfricaCountries({ params }: Props) {
   const countries = await data.json();
 
   const formattedCountries = formatCountries(countries);
+
   return <CountriesList countries={formattedCountries} params={params} />;
 }

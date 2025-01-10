@@ -2,12 +2,12 @@ import CountryCard from '@/components/CountryCard';
 import { PaginationComponent } from '@/components/PaginationComponent';
 import PerPageSelection from '@/components/PerPageSelection';
 import SortBySelection from '@/components/SortBySelection';
-import { CountryCardType } from '@/types/types';
-import { sortCountries } from '@/utils/helperFunctions';
+import { CountryFormatted } from '@/types/types';
+import { searchCountries, sortCountries } from '@/utils/helperFunctions';
 import React from 'react';
 
 type Props = {
-  countries: CountryCardType[];
+  countries: CountryFormatted[];
   params: {
     query?: string;
     page?: string;
@@ -32,14 +32,8 @@ export default async function CountriesList({ countries, params }: Props) {
 
   // filter countries / search
   if (query) {
-    const filteredCountries = countries.filter((country: CountryCardType) => {
-      return (
-        country.name.toLowerCase().includes(query.toLowerCase()) ||
-        country.nativeName.toLowerCase().includes(query.toLowerCase())
-      );
-    });
-    countries = filteredCountries;
-    pageNumbers = Math.ceil(filteredCountries.length / Number(per_page));
+    countries = searchCountries(query, countries);
+    pageNumbers = Math.ceil(countries.length / Number(per_page));
     countriesLength = countries.length;
   }
 

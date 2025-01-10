@@ -83,14 +83,14 @@ export default function Header() {
       <div className="hidden md:flex items-center justify-center  ">
         <Link
           href="/wishlist"
-          className="flex flex-col items-center justify-center  py-2 px-4  bg-[var(--color-primary)] text-white w-full h-full rounded-l-full hover:opacity-80 transition duration-300"
+          className="flex flex-col items-center justify-center  py-2 px-4  bg-[var(--color-primary)] text-white w-full h-full rounded-l-full hover:bg-[var(--color-green-dark)] transition duration-300"
         >
           <LuStar className="size-5" />
           <span className=" hidden lg:block text-sm">Wishlist</span>
         </Link>
         <Link
           href="/visited"
-          className="flex flex-col items-center justify-center py-2 px-4 bg-[var(--color-primary)] text-white w-full h-full rounded-r-full hover:opacity-80 transition duration-300"
+          className="flex flex-col items-center justify-center py-2 px-4 bg-[var(--color-primary)] text-white w-full h-full rounded-r-full hover:bg-[var(--color-green-dark)] transition duration-300"
         >
           <LuMapPinCheck className="size-5" />
           <span className="hidden lg:block text-sm">Visited</span>

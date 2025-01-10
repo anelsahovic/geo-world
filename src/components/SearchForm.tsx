@@ -14,7 +14,7 @@ export default function SearchForm({ page, query }: Props) {
       className="flex items-center justify-center w-full search-form"
       scroll={false}
     >
-      <div className="relative w-full max-w-lg">
+      <div className="relative w-full ">
         <input
           type="text"
           placeholder="Search Country..."
