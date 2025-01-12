@@ -1,3 +1,6 @@
+import { Mesh } from 'three';
+import * as THREE from 'three';
+
 export type ContinentDataType = {
   page: string;
   title: string;
@@ -93,4 +96,23 @@ export type CountryFormattedDetailed = {
     signs: string[];
     side: string;
   };
+};
+
+export type GLTFResult = {
+  nodes: {
+    Object_4: Mesh; // Add more nodes as needed
+  };
+  materials: {
+    ['Scene_-_Root']: THREE.Material; // Add more materials as needed
+  };
+};
+
+export type FeaturedCountry = {
+  name: string;
+  flag: string;
+  category: string;
+  population: string;
+  area: string;
+  capital: string;
+  interestingFact: string;
 };

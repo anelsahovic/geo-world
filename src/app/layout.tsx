@@ -3,6 +3,7 @@ import type { Metadata } from 'next';
 import './globals.css';
 import { karla } from '@/lib/fonts';
 import Header from '../sections/Header';
+import Footer from '@/sections/Footer';
 // import TopBar from '@/sections/TopBar';
 
 export const metadata: Metadata = {
@@ -21,9 +22,9 @@ export default function RootLayout({
       <body
         className={`${karla.className} antialiased max-w-7xl mx-auto relative`}
       >
-        {/* <TopBar /> */}
         <Header />
         {children}
+        <Footer />
       </body>
     </html>
   );

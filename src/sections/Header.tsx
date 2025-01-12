@@ -46,7 +46,7 @@ export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const path = usePathname();
   return (
-    <header className="flex items-center justify-between w-full py-2 px-8 lg:py-1 border-b border-[var(--color-brown-light)] ">
+    <header className="flex items-center justify-between w-full py-2 px-8 lg:py-1 border-b border-[var(--color-brown-light)] bg-[var(--color-background)]">
       <div>
         <Link href="/" className="flex items-center justify-center gap-2">
           <Image src="/logo.png" alt="Geo World" width={40} height={40} />
