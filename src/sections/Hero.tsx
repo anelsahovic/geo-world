@@ -3,7 +3,6 @@ import dynamic from 'next/dynamic';
 import Link from 'next/link';
 
 const Scene = dynamic(() => import('@/components/Scene'));
-
 export default function Hero() {
   return (
     <div className="flex flex-col-reverse sm:flex-row items-center justify-between w-full h-[600px] relative overflow-hidden px-6 sm:px-12 ">
